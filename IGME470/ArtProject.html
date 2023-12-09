@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Art Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../IGME470Blog.html" class="logo">
+					<span class="symbol"><img src="images/ProfilePic.png" alt="" /></span><span class="title">Evan
+						Yoshitani</span>
+				</a>
+
+				<!-- Nav -->
+				<!--
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+							-->
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<!--
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+				-->
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>Art Project</h1>
+				<span class="image main"><img src="images/3ArtProject/HComplete.JPEG" alt="" /></span>
+				<div class="row aln-center">
+					<span class="image left">
+						<p>
+							Ok, this time we are tasked with creating a piece of art that evokes an emotion. The emotion that I decided to go with is impending doom because that is the emotion that I felt when I realized that I completely missed the due date for this assignment. The idea that I had was that I would create a doomsday timer of sorts that shows the time left until a deadline.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/Initial Sketch.PNG">
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/Setup.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							As always I started by laying out all of my components.
+						</p>
+					</span>
+					<span class="image left">
+						<p>
+							Setting up this initial circuit was very simple and I was able to copy the servo setup from the mood cue project from earlier in the semester.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/Servo.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/ButtonSketch.PNG">
+					</span>
+					<span class="image left">
+						<p>
+							After getting this initial circuit set up I was able to code it so that the user inputs the target date and the current date. The servo would then rotate over 180 degrees using the map function as the current date approached the target date. The problem was that I needed a way to start the timer so I added a button. 
+						</p>
+					</span>
+					<span class="image left">
+						<p>
+							Once the button was added I needed to create a visual that would show the user what the progress of the servo arm. As it stands currently it doesn’t really exude the feeling of impending doom that I am looking for.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/Button.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/Paper.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							Ah, that’s better. But I still feel like I could go even further to sell the countdown as well as give the user a better idea of precisely how much time is left. 
+						</p>
+					</span><span class="image left">
+						<p>
+							I decided to give it an LCD that would show the countdown as it happened. This setup was borrowed from the Magic 8-Ball project that we did.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/LCDAdded.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/HComplete.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							Now that it has the countdown I think that it sells the feeling of impending doom that I was hoping for.
+						</p>
+					</span><span class="image left">
+						<p>
+							The code for this project was a bit of a challenge because dealing with time is hard. I originally intended for the user to only have to input the target date and just get the current time from the computer. Sadly, I couldn’t figure out how to get the system time onto the Arduino so I just had the user input the current time instead. Once the two times are set up I waited until the button was pressed before calling a getTimeDifferenceInSeconds() function. This function used the TimeLib library function makeTime() to convert the dates into seconds. Once they were in seconds it was easy enough to just subtract the two to get the difference in seconds. Using this difference in seconds I fed it into a map function to get the angle needed for the servo. After that was done I needed to update the current time so I wrote an updateCurrentTime() function to handle that. What it did was index the second and then have a series of if statements to roll over the minutes, hours, days, months, and years. Getting it so that it would work for months with 30 and 31 days as well as handling leap years was a pain but I was able to get it to work. The final task was getting the LCD screen to display the time remaining. This was easy to set up compared to figuring out how to do leap years. The only problem that I ran into was that with extremely long time differences I ran into integer overflow problems. This was easy to fix by using floats. With that all done the project is complete.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/FinalCode.PNG">
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/FinalSketch.PNG">
+					</span>
+					<span class="image left">
+						<img src="images/3ArtProject/Components.PNG">
+					</span>
+					
+					
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<!--
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+-->
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
