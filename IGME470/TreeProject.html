@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Tree Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../IGME470Blog.html" class="logo">
+					<span class="symbol"><img src="images/ProfilePic.png" alt="" /></span><span class="title">Evan
+						Yoshitani</span>
+				</a>
+
+				<!-- Nav -->
+				<!--
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+							-->
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<!--
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+				-->
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>Tree Project</h1>
+				<span class="image main"><img src="images/4TreeProject/HComplete.JPEG" alt="" /></span>
+				<div class="row aln-center">
+					<span class="image left">
+						<p>
+							You know that feeling when you’re sitting in your living room admiring the Christmas decorations that you put up when all of a sudden you realize that you forgot to turn on the lights on the Christmas tree. But you’ve already sat down and gotten comfortable. If only there was a way to turn on the lights without having to stand up. Well, that’s the problem that I am trying to solve with this project. This time I am going to make some clap-activated Christmas tree lights.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/InitialSketch.png">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/Setup.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							As always I laid out all of my components before building the circuit.
+						</p>
+					</span>
+					<span class="image left">
+						<p>
+							First I built the piezo part of the board. 
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/Peizo.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/Button.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							Then I built a button that I could use for testing.
+						</p>
+					</span>
+					<span class="image left">
+						<p>
+							Here you can see my original proof of concept code that I used to test that the lights would turn on using the Arduino. I just hooked up a button that I could press to send power to the lights.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/InitialCode.PNG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/LEDTest.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							This initial test seemed to go well so I added an LED so that I could test the lights turning on and off without having to go out to the tree.
+						</p>
+					</span><span class="image left">
+						<p>
+							I then moved on to coding in the Peizo itself. Here you can see the initial piezo code that I wrote for this test. Unfortunately, this code ran into some issues with turning on and off multiple times per clap so I had to make some adjustments.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/InitialPeizoCode.PNG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/ClapCode.PNG">
+					</span>
+					<span class="image left">
+						<p>
+							What I did was add a delay timer that would make it so that claps could only be registered once per second. This code worked like a charm.
+						</p>
+					</span><span class="image left">
+						<p>
+							All that was left was to hook this up to the tree and hope it worked. Unfortunately, while it did work, the tree lights were super dim. When I tested it with the button I thought that the lights were dim because I wasn’t holding the contacts together strongly enough but this time I was sure that I had enough contact to complete the circuit. So I started to suspect that the Arduino wasn’t able to provide enough power to light the lights all the way. This would turn out to be wrong but that’s what I thought at the time.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/DimTree.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/OptocuplerSketch.PNG">
+					</span>
+					<span class="image left">
+						<p>
+							Unfortunately, this means that my extended goal of being able to toggle between different brightness levels is impossible. However, I did remember that we had a component that allowed us to control another switch without connecting the two circuits through the use of the optocoupler.
+						</p>
+					</span><span class="image left">
+						<p>
+							I added the optocoupler to the board. Thankfully I didn’t even have to modify my code for the new component to work.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/Optocupler.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/OptocuplerOnTree.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							This time I plugged in all of the batteries and turned off the switch so that the lights would be off. I then bridged the gap in the circuit using the optocoupler as the new switch. I was hoping that this time it would work but unfortunately, it didn’t seem to work at all.
+						</p>
+					</span><span class="image left">
+						<p>
+							I brought it back to my computer and set up a test that would verify that the optocoupler was working correctly. The test came back positive so I brought it back to the tree and tried it again. This time I noticed that the lights did indeed turn on and off but they seemed even dimmer than before.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/OptocuplerTest.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/TransistorSketch.PNG">
+					</span>
+					<span class="image left">
+						<p>
+							I tested the circuit by just connecting the two halves of the lights directly with a wire and the lights turned on just fine so I believe that the optocoupler must have a limit to how much current is able to pass through it. I was originally going to give up and had actually started writing this blog post when I realized that there was one more competent that I had forgotten about. I had forgotten about the transistor.
+						</p>
+					</span><span class="image left">
+						<p>
+							Added the transistor to the board and set it up to try it out using an LED. The transistor seemed to work so I took it over to the tree to try it out. Again though it didn’t work at the tree. In fact, it didn’t even turn on or off when I activated it. 
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/TransistorTest.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/InitialCode.PNG">
+					</span>
+					<span class="image left">
+						<p>
+							Stumped, I decided to try going back to my old code that turned on and off the LED when I pressed the button to test the transistor out some more. This is when something strange happened. When I pressed the button, the LED was significantly brighter. Nothing about the circuit had changed. This could only mean that there was something in my code that was causing my LED to be dim.
+						</p>
+					</span>
+					<span class="image left">
+						<p>
+							First I thought that it was something to do with the Serial connection drawing too much power so I deleted it. When that didn’t work I thought that somehow the if statements were causing a delay that was leading to the light turning on and off really fast giving the illusion of a dim LED. When this didn’t work I considered that perhaps the resistor that I put on the piezo was somehow causing the board to lose current so I tried replacing it with a lower-resistance one. This had no effect either. Eventually, I had to go line by line and check everything. That’s when I saw it.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/ClapCode.PNG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/FinalCode.PNG">
+					</span>
+					<span class="image left">
+						<p>
+							When I was writing the code I forgot to set the pin mode to OUTPUT on the treePin. I had the old ledPin set to output but I created a new variable named treePin and forgot to set the new OUTPUT.
+						</p>
+					</span>
+					<span class="image left">
+						<p>
+							Finally, the LED was turned on nice and bright when I turned it on and off with my code. I took it over to the tree and sure enough, it worked like a charm. I could clap and the lights would turn on and off at will.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/TransistorTreeLitUp.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/NoTransistorTreeLitUp.JPEG">
+					</span>
+					<span class="image left">
+						<p>
+							In the end, I didn’t even need the transistor or the optocoupler. My original project would have worked the first time had I been more careful with my coding. 
+						</p>
+					</span>
+					<span class="image left">
+						<p>
+							While this project ended up being very simple in the end. The journey that I took to get it to work was well worth it. I learned much more about optocouplers, transistors, and the importance of setting your pin modes correctly.
+						</p>
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/HComplete.JPEG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/FinalSketch.PNG">
+					</span>
+					<span class="image left">
+						<img src="images/4TreeProject/Components.PNG">
+					</span>
+					
+					
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<!--
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+-->
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
