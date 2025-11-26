@@ -3327,3 +3327,29 @@ input, select, textarea {
 			}
 
 		}
+
+		.row img, 
+.row video {
+  width: 100%;
+  height: auto;
+  max-width: 600px; /* adjust to your taste */
+  display: block;
+  margin: 0 auto 2em auto; /* centers and adds breathing room */
+}
+
+/* Disable float behavior for images inside .row to avoid layout breaks */
+.row .image.left,
+.row .image.right {
+  float: none;
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Center video within its column */
+.video video {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
